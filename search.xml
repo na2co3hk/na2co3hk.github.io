@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>yalantinglib配置</title>
+      <link href="/posts/8cf03069.html"/>
+      <url>/posts/8cf03069.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="记录一下如何配置yalantinglib"><a class="anchor" href="#记录一下如何配置yalantinglib">#</a> 记录一下如何配置 yalantinglib</h3><p>其实很简单，但是怕忘了还是记一下</p><p>而且官方文档说的已经很详细了</p><p>首先是拉取</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">git</span> clone https://github.com/alibaba/yalantinglibs.git</pre></td></tr></table></figure><p>因为是 hander-only，直接添加包含库就好了</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token expression">C<span class="token operator">++</span><span class="token number">20</span></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">if</span><span class="token punctuation">(</span>CMAKE_CXX_COMPILER_ID STREQUAL <span class="token string">"GNU"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token function">set</span><span class="token punctuation">(</span>CMAKE_CXX_FLAGS <span class="token string">"$&#123;CMAKE_CXX_FLAGS&#125; -fcoroutines"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    #<span class="token operator">-</span>ftree<span class="token operator">-</span>slp<span class="token operator">-</span>vectorize with coroutine cause link error<span class="token punctuation">.</span> disable it util gcc fix<span class="token punctuation">.</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token function">set</span><span class="token punctuation">(</span>CMAKE_CXX_FLAGS_RELEASE <span class="token string">"$&#123;CMAKE_CXX_FLAGS_RELEASE&#125; -fno-tree-slp-vectorize"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">endif</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>include</span></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>ylt</span></span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token operator">/</span>ylt<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>third<span class="token operator">-</span>party</span></span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token operator">/</span>ylt<span class="token operator">/</span>thirdparty<span class="token punctuation">)</span></pre></td></tr></table></figure><p>然后是 cmake 选项，因为要屏蔽一些测试</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>cmake <span class="token parameter variable">-DBUILD_EXAMPLES</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token parameter variable">-DBUILD_BENCHMARK</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token parameter variable">-DBUILD_UNIT_TESTS</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token parameter variable">-DINSTALL_INDEPENDENT_THIRDPARTY</span><span class="token operator">=</span>ON</pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mongodb配置(docker和cpp-driver)</title>
       <link href="/posts/9a4d6c24.html"/>
       <url>/posts/9a4d6c24.html</url>
