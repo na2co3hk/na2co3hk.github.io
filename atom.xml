@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-10-17T09:35:19.369Z</updated>
+  <updated>2023-10-24T02:57:54.571Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>pip, go get等换源</title>
+    <link href="http://example.com/posts/7d05470e.html"/>
+    <id>http://example.com/posts/7d05470e.html</id>
+    <published>2023-10-24T02:52:40.596Z</published>
+    <updated>2023-10-24T02:57:54.571Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a class="anchor" href="#前言">#</a> 前言</h3><p>pip 和 go get 太卡了，然后想到了去换源，以此记录以下</p><h2 id="pip"><a class="anchor" href="#pip">#</a> pip</h2><p>国内镜像</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>阿里云 http://mirrors.aliyun.com/pypi/simple/</pre></td></tr><tr><td data-num="2"></td><td><pre>中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</pre></td></tr><tr><td data-num="3"></td><td><pre>豆瓣 http://pypi.douban.com/simple/</pre></td></tr><tr><td data-num="4"></td><td><pre>清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/</pre></td></tr><tr><td data-num="5"></td><td><pre>中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/</pre></td></tr></table></figure><p>一键换源</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>pip config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</pre></td></tr></table></figure><h2 id="go-get"><a class="anchor" href="#go-get">#</a> go get</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#前言&quot;&gt;#&lt;/a&gt; 前言&lt;/h3&gt;
+&lt;p&gt;pip 和 go get 太卡了，然后想到了去换源，以此记录以下&lt;/p&gt;
+&lt;h2 id=&quot;pip&quot;&gt;&lt;a class=&quot;anchor&quot; href=&quot;#pip&quot;&gt;#&lt;</summary>
+      
+    
+    
+    
+    <category term="go" scheme="http://example.com/categories/go/"/>
+    
+    <category term="python" scheme="http://example.com/categories/go/python/"/>
+    
+    
+    <category term="go" scheme="http://example.com/tags/go/"/>
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>yalantinglib配置</title>
     <link href="http://example.com/posts/8cf03069.html"/>
     <id>http://example.com/posts/8cf03069.html</id>
     <published>2023-10-17T09:29:23.143Z</published>
-    <updated>2023-10-17T09:35:19.369Z</updated>
+    <updated>2023-10-17T09:35:48.294Z</updated>
     
     <content type="html"><![CDATA[<h3 id="记录一下如何配置yalantinglib"><a class="anchor" href="#记录一下如何配置yalantinglib">#</a> 记录一下如何配置 yalantinglib</h3><p>其实很简单，但是怕忘了还是记一下</p><p>而且官方文档说的已经很详细了</p><p>首先是拉取</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">git</span> clone https://github.com/alibaba/yalantinglibs.git</pre></td></tr></table></figure><p>因为是 hander-only，直接添加包含库就好了</p><figure class="highlight c"><figcaption data-lang="c"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token expression">C<span class="token operator">++</span><span class="token number">20</span></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">if</span><span class="token punctuation">(</span>CMAKE_CXX_COMPILER_ID STREQUAL <span class="token string">"GNU"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token function">set</span><span class="token punctuation">(</span>CMAKE_CXX_FLAGS <span class="token string">"$&#123;CMAKE_CXX_FLAGS&#125; -fcoroutines"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    #<span class="token operator">-</span>ftree<span class="token operator">-</span>slp<span class="token operator">-</span>vectorize with coroutine cause link error<span class="token punctuation">.</span> disable it util gcc fix<span class="token punctuation">.</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token function">set</span><span class="token punctuation">(</span>CMAKE_CXX_FLAGS_RELEASE <span class="token string">"$&#123;CMAKE_CXX_FLAGS_RELEASE&#125; -fno-tree-slp-vectorize"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">endif</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>include</span></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>ylt</span></span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token operator">/</span>ylt<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">yalanting</span><span class="token expression"><span class="token operator">/</span>third<span class="token operator">-</span>party</span></span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token function">include_directories</span><span class="token punctuation">(</span>yalantinglibs<span class="token operator">/</span>include<span class="token operator">/</span>ylt<span class="token operator">/</span>thirdparty<span class="token punctuation">)</span></pre></td></tr></table></figure><p>然后是 cmake 选项，因为要屏蔽一些测试</p><figure class="highlight shell"><figcaption data-lang="Bash"></figcaption><table><tr><td data-num="1"></td><td><pre>cmake <span class="token parameter variable">-DBUILD_EXAMPLES</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token parameter variable">-DBUILD_BENCHMARK</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token parameter variable">-DBUILD_UNIT_TESTS</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token parameter variable">-DINSTALL_INDEPENDENT_THIRDPARTY</span><span class="token operator">=</span>ON</pre></td></tr></table></figure>]]></content>
     
